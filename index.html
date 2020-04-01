@@ -4,11 +4,53 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
-        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> 
+        <title>📋 Module_3_1 📋</title>
     </head>
     <body>
-
-
+        <div class="main-wrapper">
+            <header>
+                <div class="yellow-header"></div>
+                <h1>To-Do List</h1>
+            </header>
+            <main>
+                <div class="sort-button-wrapper">
+                    <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg%22%3E" id="polygon-bottom">
+                        <rect x="2.5" width="2.5" height="12.5"/>
+                        <rect x="10" y="3.75" width="2.5" height="7.5" transform="rotate(-90 10 3.75)"/>
+                        <rect x="10" y="8.75" width="2.5" height="10" transform="rotate(-90 10 8.75)"/>
+                        <rect x="10" y="13.75" width="2.5" height="15" transform="rotate(-90 10 13.75)"/>
+                        <path d="M3.75 15L0.502405 10.3125L6.9976 10.3125L3.75 15Z"/>
+                    </svg> 
+                </div>
+                <div class="list-wrapper">
+                    <ul class="list">
+                        <li class="list-item">
+                            <div class="list-item-content-wrapper">
+                                <div>
+                                    <span class="drag-icon">&#8759;</span>
+                                </div>
+                                <div>
+                                    <input type="text">
+                                </div>
+                                <div>
+                                    <span class="delete-icon">&#10754;</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+            <footer>
+                <div class="add-button-wrapper">
+                    <button class="add-button" id="add-button">
+                        <span class="add-button-plus">+</span>
+                        Добавить
+                    </button>
+                </div>
+            </footer>
+        </div>
+        <script src="js/templates.js"></script>        
         <script src="js/script.js"></script>
     </body>
 </html>
