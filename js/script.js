@@ -8,7 +8,7 @@ const changeSortIcon = (sortButtonType) => {
 }
 
 const getButtonType = () => {
-    const svg = document.querySelector('svg');
+    const svg = document.querySelector('.sort-button-wrapper svg');
     if(svg.id == 'polygon-bottom') {
         changeSortIcon(BOTTOM_SORT_BUTTON);
         return true;
@@ -19,20 +19,48 @@ const getButtonType = () => {
     }
 }
 
+const getListContentArray = (inputsList) => {
+    const result = [];
+    inputsList.forEach(element => { result.push(element.value) });
+    return result;
+}
+
+const addSortedArray = (inputs, sortedArray) => {
+    let i = 0;
+    inputs.forEach(element => { element.value = sortedArray[i++]; });
+}
+
 const handleSortButtonClick = (e) => {
-    const isBottomSort = getButtonType();
+    const inputs        = document.querySelectorAll('.task-input-wrapper input');
+    const isBottomSort  = getButtonType();
+    const contentArray  = (getListContentArray(inputs)).sort();
     if(isBottomSort == true) {
-        // Отсортировать по алфавиту реверсом
-        
+        addSortedArray(inputs, contentArray.reverse());
     }
     else {
-        // Отсортировать по алфавиту обычным способом
+        addSortedArray(inputs, contentArray);
     }
 }
-document.querySelector('.sort-button-wrapper').addEventListener('click', handleSortButtonClick);
+
+const deleteListItem = (e) => {
+    // if(e.target.classList.conta)
+    const deleteButton  = e.target.parentElement;
+    const listItem      = e.target.parentElement.parentElement.parentElement.parentElement;     
+    deleteButton.removeEventListener('mousedown', deleteListItem);
+    // in future add drag 
+    UL_LIST.removeChild(listItem);
+}
 
 const addListItem = (e) => {
-
+    const listItem = document.createElement('li');
+    listItem.classList.add('list-item');
+    listItem.innerHTML = LIST_ITEM_CONTENT;
+    UL_LIST.appendChild(listItem);  
+    document.querySelector('.list-item:last-child .task-delete-icon svg').addEventListener('mousedown', deleteListItem);
 }
-document.querySelector('.add-button-wrapper button').addEventListener('click', addListItem);
+
+addListItem();
+
+document.querySelector('.sort-button-wrapper').addEventListener('click', handleSortButtonClick);
+document.querySelector('.add-button-wrapper').addEventListener('mousedown', addListItem);
 

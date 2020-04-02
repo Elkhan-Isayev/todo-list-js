@@ -46,39 +46,131 @@ main {
     text-align: right;
 }
 
-svg {
+.sort-button-wrapper svg {   
     fill: #C4C4C4;
 }
 
-svg:active {
+.sort-button-wrapper svg:active {
     transform: translateY(5px);
 }
 
-svg:hover {
+.sort-button-wrapper svg:hover {
     fill: #000000;
     cursor: pointer;
 }
 
+/*
+######################################
+######################################
+######################################
+*/
+
 .list-wrapper {
+    margin-top: 10px;
     box-sizing: border-box; /*danger*/
     border: 1px solid #C4C4C4;
     border-radius: 10px;
+    /* min-height: 30px; */
+    padding: 0;
 }
 
 .list {
     list-style: none;
     padding: 0;
+    margin: 0;
     text-align: center;
+}
+
+.list-item {
+    height: 40px;
+}
+
+
+
+.list-item:hover {
+    background-color: #FFDC40;
+    /* border-radius: 10px; */
+}
+
+.list-item:first-child:hover {
+    background-color: #FFDC40;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.list-item:last-child:hover {
+    background-color: #FFDC40;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.list-item:hover .task-input {
+    background-color: #FFDC40;
 }
 
 .list-item-content-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;      /* center */
+    padding: 5px;
 }
+
+.list-item-content-wrapper div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1px;
+}
+
+.drag-icon-wrapper {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.drag-icon {
+    display: inline-block;
+    color: #c4c4c4;
+    vertical-align: middle;
+    font-weight: 900;
+    font-size: 110%;
+}
+
+.task-input-wrapper {
+    width: 80%;
+}
+
+.task-input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+}
+
+
+.task-delete-icon svg {
+    margin-top: 20%;
+}
+
+.task-delete-icon svg:hover {
+    cursor: pointer;
+}
+
+.task-delete-icon svg:hover  .circle{
+    fill: #833AE0;
+}
+
+.task-delete-icon svg:active {
+    transform: translateY(5px);
+}
+
+
+/*
+######################################
+######################################
+######################################
+*/
 
 .add-button-wrapper {
     display:flex;
     justify-content: center;
+    padding: 0px;
 }
 
 .add-button {
@@ -112,12 +204,14 @@ svg:hover {
 
 .add-button:hover .add-button-plus {
     background-color:#AA68FE;
+    cursor: pointer;
 }
 
 .add-button:hover {
     background-color: #9953F1;
+    cursor: pointer;
 }
 
-.add-button:active, .add-button-plus:active {
+.add-button:active {
     transform: translateY(5px);
 }
