@@ -43,11 +43,13 @@ const handleSortButtonClick = (e) => {
 }
 
 const deleteListItem = (e) => {
-    // if(e.target.classList.conta)
-    const deleteButton  = e.target.parentElement;
-    const listItem      = e.target.parentElement.parentElement.parentElement.parentElement;     
+    let deleteButton  = e.target.parentElement;
+    if(deleteButton.classList.contains('task-delete-icon')) {
+        deleteButton = deleteButton.children[0]; 
+    }
+    const listItem = deleteButton.parentElement.parentElement.parentElement;   
     deleteButton.removeEventListener('mousedown', deleteListItem);
-    // in future add drag 
+    // // in future add drag 
     UL_LIST.removeChild(listItem);
 }
 
@@ -62,5 +64,5 @@ const addListItem = (e) => {
 addListItem();
 
 document.querySelector('.sort-button-wrapper').addEventListener('click', handleSortButtonClick);
-document.querySelector('.add-button-wrapper').addEventListener('mousedown', addListItem);
+document.querySelector('.add-button-wrapper button').addEventListener('mousedown', addListItem);
 
