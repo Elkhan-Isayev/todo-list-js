@@ -122,7 +122,7 @@ main {
 
 .drag-icon-wrapper {
     padding: 5px;
-    cursor: pointer;
+    cursor: move;
 }
 
 .drag-icon {
@@ -214,4 +214,14 @@ main {
 
 .add-button:active {
     transform: translateY(5px);
+}
+
+/*
+######################################
+######################################
+######################################
+*/
+
+.dragging {
+    opacity: 0.9;
 }

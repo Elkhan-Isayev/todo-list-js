@@ -49,16 +49,56 @@ const deleteListItem = (e) => {
     }
     const listItem = deleteButton.parentElement.parentElement.parentElement;   
     deleteButton.removeEventListener('mousedown', deleteListItem);
-    // // in future add drag 
     UL_LIST.removeChild(listItem);
+}
+
+
+const dragListItemStart = (e) => {
+    const dragLi = e.target.parentElement.parentElement;
+    dragLi.classList.add('dragging');
+}
+
+const dragListItemEnd = (e) => {
+    const dragLi = e.target.parentElement.parentElement;
+    dragLi.classList.remove('dragging');
+}
+
+const getDragAfterElement = (clientY) => {
+    const draggableListItems = [...UL_LIST.querySelectorAll('li:not(.dragging)')];  // Список li которые неподвижны
+    return draggableListItems.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();                                  // Получаем прямоугольник li элемента
+        const offset = clientY - box.top - box.height / 2;                                // Отступ между курсором и серединой li 
+        if(offset < 0 && offset > closest.offset) {                                 // Если курсор находимся над li
+            return { offset: offset, element: child }                               // То возвращаем новый ближайший элемент
+        }
+        else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY });
+}
+
+const dragOver = (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(e.clientY).element;
+    const draggingItem = document.querySelector('.dragging');
+    
+    if(afterElement == null) {
+        UL_LIST.appendChild(draggingItem);
+    }
+    else {
+        UL_LIST.insertBefore(draggingItem, afterElement);
+    }
 }
 
 const addListItem = (e) => {
     const listItem = document.createElement('li');
     listItem.classList.add('list-item');
     listItem.innerHTML = LIST_ITEM_CONTENT;
+    listItem.querySelector('.drag-icon-wrapper').setAttribute('draggable', true);
+    listItem.addEventListener('dragstart', dragListItemStart);
+    listItem.addEventListener('dragend', dragListItemEnd);
+    listItem.querySelector('.task-delete-icon svg').addEventListener('mousedown', deleteListItem);
     UL_LIST.appendChild(listItem);  
-    document.querySelector('.list-item:last-child .task-delete-icon svg').addEventListener('mousedown', deleteListItem);
 }
 
 addListItem();
@@ -66,3 +106,4 @@ addListItem();
 document.querySelector('.sort-button-wrapper').addEventListener('click', handleSortButtonClick);
 document.querySelector('.add-button-wrapper button').addEventListener('mousedown', addListItem);
 
+UL_LIST.addEventListener('dragover', dragOver);
