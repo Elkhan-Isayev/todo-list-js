@@ -109,6 +109,7 @@ const addListItem = (e) => {
     listItem.addEventListener('dragend', dragListItemEnd);                                          //  Инициализация обработчика конца сдвига для li
     listItem.querySelector('.task-delete-icon svg').addEventListener('mousedown', deleteListItem);  //  Инициализация обработчика кнопки удаления li
     UL_LIST.appendChild(listItem);                                                                  //  Добавление li в ul
+    setTimeout(()=> { UL_LIST.querySelector('li:last-child .task-input').focus(); }, 0);            //  Добавление фокуса на созданный input
 }
 
 addListItem();                                                                                      //  Добавление первого пустого li
