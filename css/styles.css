@@ -7,20 +7,17 @@ body {
 }
 
 .main-wrapper {
-    /* position: absolute; */
     border-radius: 10px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     min-height: 240px;
     max-width: 340px;
-    /* background: #E5E5E5; */
     background: #ffffff;
     margin: 15% auto auto auto;
     padding-bottom: 20px;
 }
 
 .yellow-header {
-    /* border-radius: 10px; */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     width: 100%;
@@ -67,10 +64,9 @@ main {
 
 .list-wrapper {
     margin-top: 10px;
-    box-sizing: border-box; /*danger*/
+    box-sizing: border-box;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
-    /* min-height: 30px; */
     padding: 0;
 }
 
@@ -85,11 +81,8 @@ main {
     height: 40px;
 }
 
-
-
 .list-item:hover {
     background-color: #FFDC40;
-    /* border-radius: 10px; */
 }
 
 .list-item:first-child:hover {
@@ -110,7 +103,7 @@ main {
 
 .list-item-content-wrapper {
     display: flex;
-    justify-content: space-around;      /* center */
+    justify-content: space-around;      
     padding: 5px;
 }
 
@@ -118,6 +111,10 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 1px;
+}
+
+.dragging {
+    opacity: 0.9;
 }
 
 .drag-icon-wrapper {
@@ -214,14 +211,4 @@ main {
 
 .add-button:active {
     transform: translateY(5px);
-}
-
-/*
-######################################
-######################################
-######################################
-*/
-
-.dragging {
-    opacity: 0.9;
 }
