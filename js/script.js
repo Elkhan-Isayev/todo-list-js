@@ -101,14 +101,14 @@ const dragOver = (e) => {
 
 //  Добавление li в список
 const addListItem = (e) => {
-    const listItem = document.createElement('li');
-    listItem.classList.add('list-item');
-    listItem.innerHTML = LIST_ITEM_CONTENT;
-    listItem.querySelector('.drag-icon-wrapper').setAttribute('draggable', true);
-    listItem.addEventListener('dragstart', dragListItemStart);
-    listItem.addEventListener('dragend', dragListItemEnd);
-    listItem.querySelector('.task-delete-icon svg').addEventListener('mousedown', deleteListItem);
-    UL_LIST.appendChild(listItem);  
+    const listItem = document.createElement('li');                                                  //  Создание li
+    listItem.classList.add('list-item');                                                            //  Добавление класса для li
+    listItem.innerHTML = LIST_ITEM_CONTENT;                                                         //  Добавление контента          
+    listItem.querySelector('.drag-icon-wrapper').setAttribute('draggable', true);                   //  Добавление атрибута иконке сдвига
+    listItem.addEventListener('dragstart', dragListItemStart);                                      //  Инициализация обработчика начала сдвига для li
+    listItem.addEventListener('dragend', dragListItemEnd);                                          //  Инициализация обработчика конца сдвига для li
+    listItem.querySelector('.task-delete-icon svg').addEventListener('mousedown', deleteListItem);  //  Инициализация обработчика кнопки удаления li
+    UL_LIST.appendChild(listItem);                                                                  //  Добавление li в ul
 }
 
 addListItem();                                                                                      //  Добавление первого пустого li
