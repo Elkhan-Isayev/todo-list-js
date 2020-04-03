@@ -40,10 +40,12 @@ const handleSortButtonClick = (e) => {
     const isBottomSort  = getButtonType();
     const contentArray  = (getListContentArray(inputs)).sort();
     if(isBottomSort == true) {
-        addSortedArray(inputs, contentArray.reverse());
+        // addSortedArray(inputs, contentArray.reverse());
+        addSortedArray(inputs, contentArray);
     }
     else {
-        addSortedArray(inputs, contentArray);
+        // addSortedArray(inputs, contentArray);
+        addSortedArray(inputs, contentArray.reverse());
     }
 }
 
